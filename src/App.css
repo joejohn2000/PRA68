@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+    @keyframes fadeInFromBlack {
+            0% { opacity: 0; background-color: black; }
+            100% { opacity: 1; background-color: transparent; }
+          }
+
+          .fade-in {
+            animation: fadeInFromBlack 2.5s ease-in-out forwards;
+          }
+
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+
+          .settings-icon:hover {
+            animation: spin 1s linear infinite;
+          }
+
+          .dropdown-toggle::after {
+            display: none !important;
+          }

@@ -15,8 +15,8 @@ const Game = () => {
 
   const messageText =
     "You find yourself at the edge of the forest. What will you do?";
-  const option1 = "Enter Forest";
-  const option2 = "Go Back";
+  const option1 = "1. Enter Forest";
+  const option2 = "2. Go Back";
 
   // Speech synthesis logic
   useEffect(() => {

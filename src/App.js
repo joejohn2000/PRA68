@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import StartScreen from "./components/StartScreen";
-import Game from "./components/Game";
+import StartScreen from "./components/startscreen/StartScreen";
+import Game from "./components/gamescreen/Game";
 
 function App() {
   return (

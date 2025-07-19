@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import GameBackground from "./GameBackground";
 import SettingsDropdown from "./SettingsDropdown";

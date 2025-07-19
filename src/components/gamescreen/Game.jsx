@@ -42,8 +42,6 @@ const Game = () => {
     const timeout = setTimeout(() => setFadeIn(true), 100);
     return () => clearTimeout(timeout);
   }, []);
-
-  // 🧠 Voice Commands
   useGameVoiceCommands({
     setMuted,
     setFontSize,
@@ -61,7 +59,7 @@ const Game = () => {
         />
       </div>
 
-      <div className="position-absolute top-0 start-0 p-3">
+      {/* <div className="position-absolute top-0 start-0 p-3">
         <Button
           variant="outline-light"
           onClick={() => {
@@ -73,7 +71,7 @@ const Game = () => {
         >
           Restart
         </Button>
-      </div>
+      </div> */}
 
       <GameMessageBox
         messageText={messageText}

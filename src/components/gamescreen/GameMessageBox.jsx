@@ -1,7 +1,8 @@
-import React from "react";
+
 import { Button } from "react-bootstrap";
 
-const GameMessageBox = ({ messageText, option1, option2, fontSize }) => {
+const GameMessageBox = ({ messageText, option1, option2, fontSize,  onOption1Click,
+  onOption2Click, }) => {
   const getFontSizeClass = () => {
     switch (fontSize) {
       case "small":
@@ -18,10 +19,12 @@ const GameMessageBox = ({ messageText, option1, option2, fontSize }) => {
       <div className="bg-dark bg-opacity-75 text-white p-4 rounded shadow-lg text-center">
         <p className={`mb-3 ${getFontSizeClass()}`}>{messageText}</p>
         <div className="d-flex justify-content-center gap-3">
-          <Button variant="outline-info" className={getFontSizeClass()}>
+          <Button variant="outline-info" className={getFontSizeClass()}onClick={onOption1Click}>
+
             {option1}
           </Button>
-          <Button variant="outline-light" className={getFontSizeClass()}>
+          <Button variant="outline-light" className={getFontSizeClass()}onClick={onOption2Click}>
+
             {option2}
           </Button>
         </div>

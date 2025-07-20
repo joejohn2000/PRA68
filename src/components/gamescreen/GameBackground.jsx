@@ -1,6 +1,6 @@
 import React from "react";
 
-const GameBackground = ({ children, fadeIn }) => {
+const GameBackground = ({ children, fadeIn , backgroundImage }) => {
   return (
     <>
       <style>
@@ -21,7 +21,7 @@ const GameBackground = ({ children, fadeIn }) => {
             fadeIn ? "fade-in" : ""
           }`}
           style={{
-            backgroundImage: "url('/images/background.jpg')",
+            backgroundImage: `url(${backgroundImage})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",

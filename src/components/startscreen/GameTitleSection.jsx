@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 const GameTitleSection = ({ onStart, onShowInstructions }) => (
   <section
     aria-labelledby="gameTitle"
-    className="p-5 rounded text-center shadow-lg bg-black bg-opacity-50"
+    className="p-5 rounded text-center shadow-lg bg-black bg-opacity-100"
   >
     <h1
       id="gameTitle"

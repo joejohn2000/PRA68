@@ -25,7 +25,8 @@ const SettingsDropdown = ({ muted, setMuted, fontSize, setFontSize }) => {
         `}
       </style>
 
-      <Dropdown align="end">
+
+     <Dropdown align="end">
         <Dropdown.Toggle
           variant="dark"
           className="settings-icon border-0 bg-transparent p-0"
@@ -34,11 +35,22 @@ const SettingsDropdown = ({ muted, setMuted, fontSize, setFontSize }) => {
           <GearFill size={28} color="white" />
         </Dropdown.Toggle>
 
-        <Dropdown.Menu>
-          <Dropdown.Header>Audio</Dropdown.Header>
+        <Dropdown.Menu
+          className="p-0 m-0 border-0"
+          style={{
+            backgroundColor: "rgba(255, 255, 255, 0.15)",   // translucent white
+            backdropFilter: "blur(10px)",                    // blur behind
+            WebkitBackdropFilter: "blur(10px)",              // Safari support
+            borderRadius: "0.5rem",                           // rounded corners
+            border: "1px solid rgba(255, 255, 255, 0.3)",    // subtle border
+            minWidth: "12rem",
+          }}
+        >
+          <Dropdown.Header className="px-3 py-2  text-light">Audio</Dropdown.Header>
           <Dropdown.Item
             onClick={() => setMuted((prev) => !prev)}
             aria-label="Toggle mute"
+            className="px-3 py-2 text-light"
           >
             {muted ? (
               <>
@@ -53,22 +65,23 @@ const SettingsDropdown = ({ muted, setMuted, fontSize, setFontSize }) => {
             )}
           </Dropdown.Item>
 
-          <Dropdown.Divider />
+          <Dropdown.Divider className="my-1" />
 
-          <Dropdown.Header>Font Size</Dropdown.Header>
-          <Dropdown.Item onClick={() => setFontSize("small")}>Small</Dropdown.Item>
-          <Dropdown.Item onClick={() => setFontSize("medium")}>Medium</Dropdown.Item>
-          <Dropdown.Item onClick={() => setFontSize("large")}>Large</Dropdown.Item>
+          <Dropdown.Header className="px-3 py-2  text-light ">Font Size</Dropdown.Header>
+          <Dropdown.Item className="px-3 py-2 text-light" onClick={() => setFontSize("small")}>Small</Dropdown.Item>
+          <Dropdown.Item className="px-3 py-2 text-light" onClick={() => setFontSize("medium")}>Medium</Dropdown.Item>
+          <Dropdown.Item className="px-3 py-2 text-light" onClick={() => setFontSize("large")}>Large</Dropdown.Item>
 
-          <Dropdown.Divider />
+          <Dropdown.Divider className="my-1" />
 
           <Dropdown.Item
+            className="px-3 py-2 text-light"
             onClick={() => {
               window.speechSynthesis.cancel();
               navigate("/");
             }}
           >
-            Go Back
+            Exit
           </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>

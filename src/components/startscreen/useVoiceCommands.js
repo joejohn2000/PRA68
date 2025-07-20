@@ -1,12 +1,25 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
-const useVoiceCommands = (onStart, onShowInstructions) => {
+const useVoiceCommands = (
+  onStart,
+  onShowInstructions,
+  onCloseInstructions,
+  active
+) => {
+  const recognitionRef = useRef(null);
+
   useEffect(() => {
+    if (!active) {
+      recognitionRef.current?.stop();
+      return;
+    }
+
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognition) return;
 
     const recognition = new SpeechRecognition();
+    recognitionRef.current = recognition;
     recognition.continuous = true;
     recognition.lang = "en-US";
 
@@ -19,7 +32,8 @@ const useVoiceCommands = (onStart, onShowInstructions) => {
         onStart();
       } else if (
         transcript.includes("how to play") ||
-        transcript.includes("how")
+        transcript.includes("help") ||
+        transcript.includes("show instructions")
       ) {
         onShowInstructions();
         setTimeout(() => {
@@ -30,16 +44,22 @@ const useVoiceCommands = (onStart, onShowInstructions) => {
             window.speechSynthesis.speak(utterance);
           }
         }, 500);
-      } else if (transcript.includes("stop") || transcript.includes("cancel")) {
+      } else if (
+        transcript.includes("close") ||
+        transcript.includes("stop") ||
+        transcript.includes("cancel")
+      ) {
+        onCloseInstructions();
         window.speechSynthesis.cancel();
       }
     };
 
     recognition.onerror = (event) => console.warn("Speech error:", event.error);
+
     recognition.start();
 
     return () => recognition.stop();
-  }, [onStart, onShowInstructions]);
+  }, [active, onStart, onShowInstructions, onCloseInstructions]);
 };
 
 export default useVoiceCommands;
